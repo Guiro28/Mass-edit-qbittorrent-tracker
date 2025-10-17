@@ -45,3 +45,82 @@ Idéal pour :
 
 ```bash
 pip install qbittorrent-api
+```
+
+---
+
+## ⚙️ Configuration
+
+Tout se fait **directement dans le script** (`CONFIG` en haut du fichier) :
+
+```python
+CONFIG = {
+    "host": "http://127.0.0.1:8080",
+    "username": "admin",
+    "password": "adminadmin",
+    "verify_cert": False,
+    "action": "replace",  # "replace", "add" ou "remove"
+    "find": "http://old-tracker.example/announce",
+    "replace": "https://new-tracker.example/announce",
+    "add_url": "https://tracker.example/announce",
+    "use_regex": False,
+    "dry_run": True,
+    "only_category": None,
+}
+```
+
+---
+
+## ▶️ Utilisation
+
+```bash
+python bulk_qbittorrent_trackers.py
+```
+
+### 🔁 Exemple : remplacer un tracker
+```python
+"action": "replace",
+"find": "http://old-tracker.com/announce",
+"replace": "https://new-tracker.net/announce",
+```
+
+### ➕ Exemple : ajouter un tracker
+```python
+"action": "add",
+"add_url": "https://tracker.example/announce",
+```
+
+### 🗑️ Exemple : supprimer un tracker
+```python
+"action": "remove",
+"find": "https://dead-tracker.com/announce",
+```
+
+---
+
+## 🧠 Bonnes pratiques
+
+- **Commence toujours par `dry_run=True`** pour vérifier les modifications avant exécution.
+- Utilise `"use_regex": True` pour matcher plusieurs domaines (ex. `*.example.org`).
+- En cas de connexion HTTPS auto-signée, laisse `"verify_cert": False`.
+
+---
+
+## 🧩 Exemple de sortie (mode dry-run)
+
+```
+✅ Connecté à qBittorrent (http://127.0.0.1:8080)
+📦 42 torrents trouvés.
+🔁 Film1.torrent : http://old-tracker.example/announce → https://new-tracker.example/announce
+🔁 Serie2.torrent : http://old-tracker.example/announce → https://new-tracker.example/announce
+✅ Terminé.
+```
+
+---
+
+## 🪪 Licence
+
+Ce projet est distribué sous licence **MIT**.  
+Vous êtes libre de l’utiliser, le modifier et le redistribuer avec attribution.
+
+
