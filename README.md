@@ -40,8 +40,6 @@ Idéal pour :
 
 - Python **3.8 ou plus récent**
 - qBittorrent **4.1+**
-- L’API Web activée (dans qBittorrent :  
-  **Outils → Options → Interface Web (WebUI)**)
 
 ### 2️⃣ Installation de la dépendance
 
